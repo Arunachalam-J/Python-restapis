@@ -8,4 +8,4 @@ COPY . /app
 USER 1001
 RUN pip3 install --no-cache -r requirements.txt 
 EXPOSE 8080
-ENTRYPOINT ["flask","run"]
+ENTRYPOINT ["flask","run","port=8080"]
