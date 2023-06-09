@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Resource, Api
-from pyrestapis.resources.Foo import Foo
+from app.resources.Foo import Foo
 
 app = Flask(__name__)
 api = Api(app)
