@@ -1,4 +1,4 @@
-from app.db.set_setting import Mongo
+from app.db.db_settings import Mongo
 from app.resources.probes import readinessProbes, livenessProbes
 from flask import Response
 

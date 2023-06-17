@@ -1,6 +1,6 @@
 from flask import Response,jsonify
 from flask_restful import Resource, Api
-from app.db.set_setting import Mongo
+from app.db.db_settings import Mongo
 from app.logging.log import logger
 
 class readinessProbes(Resource):

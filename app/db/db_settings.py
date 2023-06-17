@@ -5,21 +5,24 @@ from app.config.config import get_config
 
 class Mongo():
     __instance = None    
-    
+    __client = None
     def __new__(cls,*arg,**karg):
         if cls.__instance is None:
             cls.__instance = super().__new__(cls)
         return cls.__instance
 
     def __init__(self,host,port) -> None:
-        self.client = MongoClient(host=get_config()["mongodbHost"],
+        if Mongo.__client is None:
+            Mongo.__client = MongoClient(host=get_config()["mongodbHost"],
                                   port=get_config()["mongodbPort"])
+        
 
     def get_client(self) -> MongoClient:
-        return self.client
+        return Mongo.__client
     
     def __del__(self):
-        self.client.close()
+        Mongo.__client.close()
+        Mongo.__client= None
         Mongo.__instance == None
         del(self)
         
